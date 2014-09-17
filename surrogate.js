@@ -1,5 +1,4 @@
 var events = require("events");
-var crypto = require("crypto");
 var net = require("net");
 var _ = require("lodash");
 
@@ -8,7 +7,6 @@ function Surrogate(configuration){
         configuration = {};
 
     this.configuration = _.defaults(configuration, {
-        name: crypto.randomBytes(16).toString("hex"),
         upstreams: [],
         port: Math.floor(Math.random() * 1024) + 1025,
         retries: 3
