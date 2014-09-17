@@ -1,0 +1,29 @@
+{
+  "name": "surrogate",
+  "version": "0.1.0",
+  "description": "Dynamic TCP proxy",
+  "main": "application.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/normanjoyner/surrogate"
+  },
+  "keywords": [
+    "TCP",
+    "proxy",
+    "dynamic",
+    "upstream"
+  ],
+  "author": "Norman Joyner <norman.joyner@gmail.com>",
+  "license": "GPLv2",
+  "bugs": {
+    "url": "https://github.com/normanjoyner/surrogate/issues"
+  },
+  "homepage": "https://github.com/normanjoyner/surrogate",
+  "dependencies": {
+    "async": "^0.9.0",
+    "lodash": "^2.4.1"
+  }
+}
