@@ -8,8 +8,10 @@ function Surrogate(configuration){
 
     this.configuration = _.defaults(configuration, {
         upstreams: [],
-        port: Math.floor(Math.random() * 1024) + 1025,
-        retries: 3
+        port: Math.floor(Math.random() * 1024) + 1024,
+        retries: 3,
+        self_populate: undefined,
+        self_populate_interval: 60000
     });
 
     this.init_socket();
@@ -54,6 +56,12 @@ Surrogate.prototype.init_socket = function(retry){
     this.proxy.listen(this.configuration.port);
 
     this.proxy.on("listening", function(){
+        if(self.configuration.self_populate){
+            self.populator = setInterval(function(){
+                self.configuration.upstreams = self.configuration.self_populate();
+            }, self.configuration.self_populate_interval);
+        }
+
         self.emit("listening");
     });
 
@@ -78,6 +86,10 @@ Surrogate.prototype.init_socket = function(retry){
 }
 
 Surrogate.prototype.index = 0;
+
+Surrogate.prototype.force_population = function(){
+    this.configuration.upstreams = this.configuration.self_populate();
+}
 
 Surrogate.prototype.deactivate = function(){
     if(this.proxy._handle != null)
