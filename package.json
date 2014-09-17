@@ -1,6 +1,6 @@
 {
-  "name": "surrogate",
-  "version": "0.1.0",
+  "name": "tcp-surrogate",
+  "version": "0.0.0",
   "description": "Dynamic TCP proxy",
   "main": "application.js",
   "scripts": {
